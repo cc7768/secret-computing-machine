@@ -1,0 +1,450 @@
+\usepackage{ifthen}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{enumerate}
+\usepackage{bm}
+\usepackage{float}
+\usepackage{endnotes}
+\usepackage{marvosym}
+\usepackage{pictex}
+\usepackage{xparse}
+\usepackage{pgfplots}
+\usepackage{etoolbox}
+\usepackage{datatool}
+\usepackage{newfile}
+\usepackage{ragged2e}
+\usepackage{fmtcount}
+\usepackage{changepage}
+\usepackage{dsfont}
+\usepackage{eurosym}
+\usepackage{xr}
+\usepackage[absolute]{textpos}
+%
+%   Boolean variables
+%
+\newboolean{paper}
+\newboolean{syllabus}
+\newboolean{book}
+\newboolean{slidenumber}
+\newboolean{author}
+\newboolean{solution}
+\newboolean{handout}
+\newboolean{whitebackground}
+\newboolean{test}
+\newboolean{slide}
+\newboolean{graph}
+\newboolean{myrunninghead}
+%
+%   Options
+%
+\DeclareOption{paper}{\papertrue}%
+\DeclareOption{slide}{\setboolean{slide}{true}}%
+\DeclareOption{syllabus}{\setboolean{syllabus}{true}}%
+\DeclareOption{graph}{\setboolean{graph}{true}}%
+\DeclareOption{pdfoutput}{\setboolean{pdfoutput}{true}}%
+\DeclareOption{author}{\setboolean{author}{true}}%
+\DeclareOption{handout}{\setboolean{handout}{true}}%
+\DeclareOption{test}{\setboolean{test}{true}}%
+\DeclareOption{solution}{\setboolean{solution}{true}}%
+\DeclareOption{slidenumber}{\setboolean{slidenumber}{true}}%
+\DeclareOption{myrunninghead}{\setboolean{myrunninghead}{true}}%
+\ProcessOptions
+%
+%   Counters
+%
+\newcounter{barnumber}
+\newcounter{slidetype}
+\newcounter{frame}
+\newcounter{itemnumber}
+\newcounter{outlinesection}
+%
+%   Colors
+%
+\definecolor{background}{rgb}{1,1,1}
+\definecolor{picbackground}{rgb}{.9,.9,.9}
+\definecolor{red}{rgb}{.9,.6,.6}
+\definecolor{blue}{rgb}{.6,.6,.9}
+\definecolor{green}{rgb}{.2,.7,.2}
+\definecolor{yellow}{rgb}{.9,.9,0}
+\definecolor{barcolor}{rgb}{.7,.6,.5}
+\definecolor{tableshade}{rgb}{.8,.8,.8}
+\definecolor{dgray}{rgb}{.7,.7,.7}
+\definecolor{ddgray}{rgb}{.5,.5,.5}
+\definecolor{lgray}{rgb}{.8,.8,.8}
+\definecolor{llgray}{rgb}{.9,.9,.9}
+\definecolor{title}{rgb}{0.6,0,0}
+%
+%   Dimensions
+%
+\newdimen\extragraphspace
+\newdimen\hnl\newdimen\vnl%
+%
+% Logical commands
+%
+\newcommand{\forloop}[5][1]{%
+    \setcounter{#2}{#3}%
+    \ifthenelse{#4}{%
+        #5%
+        \addtocounter{#2}{#1}%
+        \forloop[#1]{#2}{\value{#2}}{#4}{#5}%
+    }{}%
+}%
+\newcounter{repeatcounter}
+\def\rep#1#2{%
+    \forloop{repeatcounter}{0}{\value{repeatcounter}<#1}{#2}%
+}%
+\def\repmone#1#2{%
+    \forloop{repeatcounter}{1}{\value{repeatcounter}<#1}{#2}
+}
+
+%
+% Basic paper style
+%
+\oddsidemargin=0.25truein \evensidemargin=0.25truein
+\topmargin=-0.25truein
+\textwidth=6.0truein
+\textheight=8.75truein
+%
+% Tables and figures
+%
+% Change the way figure and table caption is displayed
+%
+\makeatletter 
+    \long\def\@makecaption#1#2{%
+        \halfline
+        \parbox{\textwidth}{\raggedright\textsf{\textbf{#1}} \\ \textsf{#2}}%
+        \halfline
+    }
+%
+% Change the font of figure and table content; 
+% can be used to change other features of it (e.g., centering)
+%
+\makeatletter
+\let\oldfigure\figure
+\def\figure{\@ifnextchar[\figure@i \figure@ii}
+\def\figure@i[#1]{\oldfigure[#1]\centering}
+\def\figure@ii{\oldfigure\sf}
+\makeatother
+%
+\makeatletter
+\let\oldtable\table
+\def\table{\@ifnextchar[\table@i \table@ii}
+\def\table@i[#1]{\oldtable[#1]\centering}
+\def\table@ii{\oldtable\sf}
+\makeatother
+%
+% Title page
+%
+\ifpaper
+\makeatletter
+    \renewcommand{\@maketitle}{%
+    \newpage\parindent0in\null\vskip2em%
+    {\LARGE\textbf{\textsf{\@title}}\par\vskip2em}%
+    \@author\par\vskip2em%
+    \@date%
+    \par
+    \thispagestyle{empty}\setcounter{page}{0}%\newpage
+    }%
+\makeatother
+\renewenvironment{abstract}% Change the way abstract is presented
+{\vskip2em\noindent{\textbf{\textsf{Abstract.}}}\hspace*{1ex}}{}
+\fi
+%
+% Section and chapter format
+%
+\makeatletter % add a period after section number
+    \def\@seccntformat#1{\csname the#1\endcsname.\hspace*{1ex}}
+\makeatother
+\makeatletter % turn section format to sanserif
+%\def\chapter{\newpage\thispagestyle{empty}\vspace*{3\baselineskip}%
+%			 \@startsection {chapter}{1}{0pt}{-1ex}{22ex}%
+%             {\Huge\sf\bfseries\uppercase}}%
+\def\@dottedtocline#1#2#3#4#5{%
+  \ifnum #1>\c@tocdepth \else
+    \vskip \z@ \@plus.2\p@
+    {\leftskip #2\relax \rightskip \@tocrmarg \parfillskip -\rightskip
+     \parindent #2\relax\@afterindenttrue
+     \interlinepenalty\@M
+     \leavevmode
+     \@tempdima #3\relax
+     \advance\leftskip \@tempdima \null\nobreak\hskip -\leftskip
+     {#4}\nobreak
+     \leaders\hbox{$\m@th
+        \mkern \@dotsep mu\hbox{.}\mkern \@dotsep
+        mu$}\hfill
+     \nobreak
+     \hb@xt@\@pnumwidth{\hfil\normalfont \normalcolor \sf#5}%
+     \par}%
+  \fi}
+%
+\def\@makechapterhead#1{%
+  \vspace*{50\p@}%
+  {\parindent \z@ \raggedright \normalfont
+    \ifnum \c@secnumdepth >\m@ne
+      \if@mainmatter
+        \Huge\bfseries\textsf{\thechapter} $\raisebox{-.3ex}{\rule{2pt}{2ex}}$ \Huge \bfseries \textsf{\uppercase{#1}}%      		\fi
+    \fi
+    \vskip 80\p@
+  }}
+\def\@makeschapterhead#1{%
+  \vspace*{50\p@}%
+  {\parindent \z@ \raggedright
+    \normalfont
+    \interlinepenalty\@M
+    \Huge \bfseries  \textsf{\uppercase{#1}}\par\nobreak
+    \vskip 40\p@
+  }}
+	\def\section{\@startsection {section}{1}{\z@}%
+	                                   {-3.5ex \@plus -1ex \@minus -.2ex}%
+	                                   {2.3ex \@plus.2ex}%
+	                                   {\normalfont\Large\sf\bfseries}}
+	\def\subsection{\@startsection{subsection}{2}{\z@}%
+	                                     {-3.25ex\@plus -1ex \@minus -.2ex}%
+	                                     {1.5ex \@plus .2ex}%
+	                                     {\normalfont\large\sf\bfseries}}
+\makeatother
+%
+% Theorems
+%
+\makeatletter % Change font in newtheorem and add a period after name
+\def\@begintheorem#1#2{\trivlist
+   \item[\hskip \labelsep{\textsf{\textbf{#1\ #2.}}}]\itshape}
+\makeatother
+\newboolean{nodot}
+%
+% Footnotes 
+%
+\makeatletter % This redefines the way footnotes are displayed
+    \newlength{\myfootnotewidth}
+    \newlength{\myfootnotelabel}
+    \setlength{\myfootnotelabel}{3.5ex}%
+    \renewcommand{\@makefntext}[1]{%
+        \setlength{\myfootnotewidth}{\columnwidth}%
+        \addtolength{\myfootnotewidth}{-\myfootnotelabel}%
+        \addtolength{\myfootnotewidth}{-3ex}%
+        \noindent\makebox[\myfootnotelabel][r]{\raisebox{-.95ex}{{\normalsize\@makefnmark}}%
+        \ifthenelse{\boolean{nodot}}{}{\raisebox{.05ex}{.}}  }%
+        \parbox[t]{\myfootnotewidth}{#1}%
+    }
+\makeatother
+%
+% First footnote
+%
+\newfloat{bottomtext}{b}{}
+\long\def\firstfootnote#1{\begin{bottomtext}\footnoterule\par\vspace*{.5\footnotesep}\parbox{\textwidth}{\footnotesize#1}\end{bottomtext}}
+%
+% Endnote format: change doanenote, misc formats
+%
+\def\enoteheading{\section*{{\footnotesize Endnotes}}\mbox{}\par\vskip-1.5\baselineskip}
+\def\enotesize{\scriptsize}
+\makeatletter
+\def\theendnotes{\immediate\closeout\@enotes \global\@enotesopenfalse
+	\begingroup
+    	\makeatletter
+    	\def\@doanenote##1##2>{\def\@theenmark{##1}\par\@theenmark. 
+		\edef\@currentlabel{\csname p@endnote\endcsname\@theenmark}
+		\begingroup}
+    	\def\@endanenote{\par\endgroup}%
+    	\enoteheading
+    	\enotesize
+    	\input{\jobname.ent}%
+	\endgroup
+}
+\makeatother
+%
+% Spacing commands
+%
+\def\spacingone{\parskip=\bigskipamount\parindent=0in}
+\def\spacingtwo{\parskip=0in\parindent=5ex}
+\def\oneline{\vspace{\baselineskip}}
+\def\halfline{\vspace{.5\baselineskip}}
+\def\onelineup{\vspace*{-\baselineskip}}
+\def\halflineup{\vspace*{-.5\baselineskip}}
+%
+% Dividers
+%
+\def\whitebox#1{\vspace{\baselineskip}\noindent\raisebox{.6ex}{\framebox[1.5ex][t]{\raisebox{.2ex}{}}}\hspace{1ex}{\textbf{\textsf{#1}}}\hspace{1ex}}
+\def\blackbox#1{\vspace{\baselineskip}\noindent\rule{1.5ex}{1.5ex}\hspace{1ex}{\textbf{\textsf{#1}}}\hspace{1ex}}
+\def\separator{\begin{center}\rule{100pt}{.5pt}\end{center}}
+%
+% Math commands
+%
+\def\dlim{\displaystyle\lim}
+\def\abse{|\hspace*{1pt}\epsilon\hspace*{1pt}|}
+\newlength\argheight
+\newlength\argwidth
+\DeclareDocumentCommand\brackets{oomo}{%
+    \IfNoValueTF{#4}{\def\delimiterstretch{1.2}}{\def\delimiterstretch{#4}}%
+    \IfNoValueTF{#1}{\def\leftdelimiter{(}}{\def\leftdelimiter{#1}}%
+    \IfNoValueTF{#2}{\def\rightdelimiter{)}}{\def\rightdelimiter{#2}}%
+    \settoheight\argheight{$#3$}\!\left\leftdelimiter\rule{0pt}{\delimiterstretch\argheight}#3\right\rightdelimiter
+}%
+\DeclareDocumentCommand\bbrackets{omo}{%
+    \IfNoValueTF{#1}{\def\leftdelimiter{(}}{\def\leftdelimiter{#1}}%
+    \IfNoValueTF{#3}{\def\rightdelimiter{)}}{\def\rightdelimiter{#3}}%
+    \settoheight\argheight{$#2$}\!\left\leftdelimiter\rule{0pt}{1.4\argheight}#2\right\rightdelimiter
+}%
+\DeclareDocumentCommand\sbrackets{om}{%
+    \IfNoValueTF{#1}{\def\delimiterstretch{1.2}}{\def\delimiterstretch{#1}}%
+    \settoheight\argheight{$#2$}\!\left[\rule{0pt}{\delimiterstretch\argheight}#2\right]
+}%
+\def\vv#1{\mbox{\small\em#1\,}}
+\def\vvr#1{\mbox{\rm\em#1\,}}
+\def\vvs#1{\mbox{\tiny\em#1}}
+\def\sub#1{_\text{\it\tiny#1}}
+\def\realset{I\!\!R}
+\def\complexset{{\sf Z\;\!\!\!\!Z}}
+\def\bdm{\begin{displaymath}}
+\def\edm{\end{displaymath}}
+\def\be{\begin{equation}}
+\def\ee{\end{equation}}
+\def\fpartial{\mbox{\footnotesize$\partial$}}
+\DeclareDocumentCommand\der{omom}{{%
+	\IfNoValueF{#1}{\raisebox{-#1}{}}d\hspace*{1pt}#2\over%
+	\IfNoValueF{#3}{\raisebox{+#3}{}}d\hspace*{1pt}#4
+}}
+\DeclareDocumentCommand\pder{omom}{{%
+	\IfNoValueF{#1}{\raisebox{-#1}{}}\fpartial\hspace*{1pt}#2\over%
+	\IfNoValueF{#3}{\raisebox{+#3}{}}\fpartial\hspace*{1pt}#4
+}}
+\def\sder#1#2{\frac{d^2\hspace*{1pt}#1}{d\hspace*{1pt}#2^2}}
+\def\spder#1#2{\frac{\fpartial^2\hspace*{1pt}#1}{\fpartial\hspace*{1pt}#2^2}}
+\def\cpder#1#2#3{\frac{\fpartial^2\hspace*{1pt}#1}{\fpartial\hspace*{1pt}#2\ \fpartial\hspace*{1pt}#3}}
+\def\ccpder#1#2#3#4{\frac{\fpartial^3\hspace*{1pt}#1}{\fpartial\hspace*{1pt}#2\ \fpartial\hspace*{1pt}#3\ \fpartial\hspace*{1pt}#4}}
+\def\tder#1#2{d\hspace*{1pt}#1\hspace*{1pt}/\hspace*{1pt}d\hspace*{1pt}#2}
+\def\tpder#1#2{\fpartial\hspace*{1pt}#1\hspace*{1pt}/\hspace*{1pt}\fpartial\hspace*{1pt}#2}
+\def\tsder#1#2{d^2\hspace*{1pt}#1\hspace*{1pt}/\hspace*{1pt}d\hspace*{1pt}#2^2}
+\def\tspder#1#2{\fpartial^2\hspace*{1pt}#1\hspace*{1pt}/\hspace*{1pt}\fpartial\hspace*{1pt}#2^2}
+\def\tcpder#1#2#3{\fpartial^2\hspace*{1pt}#1\hspace*{1pt}/\hspace*{1pt}\fpartial\hspace*{1pt}#2\ \fpartial\hspace*{1pt}#3}
+\def\tccpder#1#2#3#4{\fpartial^3\hspace*{1pt}#1\hspace*{1pt}/\hspace*{1pt}\fpartial\hspace*{1pt}#2\ \fpartial,#3\ \fpartial\hspace*{1pt}#4}
+\def\tfrac#1#2{\textstyle\frac{#1}{#2}}
+\def\valueat#1#2{\left.#1\,\right|_{\!\!\tiny\renewcommand{\arraystretch}{.7}\begin{array}[b]{l}#2\mbox{}\end{array}}}
+\ifbook
+    \newtheorem{definition}{Definition}[chapter]
+    \newtheorem{assumption}{Assumption}[chapter]
+    \newtheorem{theorem}{Theorem}[chapter]
+    \newtheorem{corollary}{Corollary}[chapter]
+    \newtheorem{lemma}{Lemma}[chapter]
+    \newtheorem{proposition}{Proposition}[chapter]
+    \newtheorem{conjecture}{Conjecture}[chapter]
+\else
+    \newtheorem{definition}{Definition}
+    \newtheorem{assumption}{Assumption}
+    \newtheorem{theorem}{Theorem}
+    \newtheorem{corollary}{Corollary}
+    \newtheorem{lemma}{Lemma}
+    \newtheorem{proposition}{Proposition}
+    \newtheorem{conjecture}{Conjecture}
+\fi
+\DeclareDocumentEnvironment{proof}{oo}%
+{%
+\vspace{.0\baselineskip}\noindent%
+\IfNoValueTF{#1}
+{{\textbf{\textsf{Proof:}}\ }}
+{{\textbf{\textsf{Proof of #1 \ref{#2}:}}\ }}
+}
+{~\rule{1.5ex}{1.5ex}\\}
+%
+% Tabular macros
+%
+\arrayrulecolor{background}
+\setlength{\arrayrulewidth}{2pt}
+\setlength\extrarowheight{2pt} % changes spacing in tabular
+\newcolumntype{q}[1]{>{\raggedleft}p{#1}}
+\DeclareDocumentCommand\nl{o}{% new line in tabular environment
+	\IfNoValueTF{#1}
+		{\tabularnewline\hline}
+		{\tabularnewline\multicolumn{1}{c}{\vspace*{#1}}\tabularnewline}
+}%
+\def\snl{\tabularnewline\rowcolor{background!80!gray}\hline} % \snl stands for shaded new line
+\def\grayrow{\rowcolor{gray}}
+\def\graycell{\cellcolor{gray}}
+\def\dgrayrow{\rowcolor{dgray}}
+\def\dgraycell{\cellcolor{dgray}}
+\def\ddgrayrow{\rowcolor{ddgray}}
+\def\ddgraycell{\cellcolor{ddgray}}
+\def\clearcell{\cellcolor{background}}
+%
+% Reference commands
+%
+\newenvironment{references}{%
+    \reflisttrue
+    \section*{References}\vspace{-\baselineskip}
+    \begin{list}{}{\listparindent=-30pt \leftmargin=30pt  \itemindent=-30pt } \item
+}
+{
+    \end{list}
+}
+\DeclareDocumentCommand\artref{mmmmmom}{%
+	\item {\small\sc#1} (#2), ``#3,'' {\it#4} {\bf #5}\IfNoValueF{#6}{ (#6)}, #7.
+}
+\DeclareDocumentCommand\wpref{mmmm}{%
+	\item {\small\sc#1} (#2), ``#3,'' #4.
+}
+\DeclareDocumentCommand\bookref{mmmm}{%
+	\item {\small\sc#1} (#2), {\it #3}, #4.%
+}
+%
+% Shaded text
+%
+\newdimen\boxborder
+\newdimen\argouterwidth
+\DeclareDocumentCommand\shadedtext{omo}{%
+	\IfNoValueTF{#3}{\setlength\boxborder{10pt}}{\setlength\boxborder{#3}}%
+	\IfNoValueTF{#1}{%
+		\settowidth\argwidth{\mbox{ }#2\mbox{ }}%
+		\addtolength\argwidth\boxborder%
+		\settototalheight\argheight{#2}%
+		\addtolength\argheight\boxborder%
+	    \setlength\argouterwidth\argwidth
+	    \resizebox{\argouterwidth}{!}{%
+	    \beginpicture%
+	    	\put{{\color{black!10}\rule{\argwidth}{\argheight}}} at 0 0
+			\put{{\color{black}#2}} at 0 0
+    	\endpicture}%
+	}{%
+		\setlength\argouterwidth{#1}%
+		\setlength\argwidth{#1}%
+		\addtolength\argwidth{-\boxborder}%
+		\settototalheight\argheight{\parbox{\argwidth}{#2}}%
+		\addtolength\argheight{\boxborder}%
+	    \resizebox{\argouterwidth}{!}{%
+	    \beginpicture
+	    	\put{{\color{black!10}\rule{\argouterwidth}{\argheight}}} at 0 0
+			\put{{\color{black}\parbox{\argwidth}{#2}}} at 0 0
+    	\endpicture}
+	}%
+}
+%
+% Miscellaneous commands
+%
+\def\deepunderline#1{\underline{\raisebox{-.44ex}{}#1}} % it's better to do this with ex rather than pt
+\renewcommand{\topfraction}{1}
+\renewcommand{\bottomfraction}{1}
+\long\def\ignore#1{}
+\def\cents{c\hspace*{-1.1ex}/}
+\def\tm{\leavevmode\hbox{$^{\mbox{\tiny TM}}$}}
+\def\tbc{\underline{To be completed}}
+\makeatletter
+\def\verbatim@font{\footnotesize\tt}
+\makeatother
+%
+% Patch calc to allow for line breaks in settoheight commands
+%
+\makeatletter
+\begingroup
+\toks0=\expandafter{\@settodim{#1}{#2}{#3}}
+\edef\x{\endgroup
+  \long\def\noexpand\@settodim##1##2##3{\the\toks0 }}\x
+\makeatother
+%
+% Call additional packages
+%
+\ifgraph\usepackage{nyugraph}\fi
+\ifslide\usepackage{nyuslide}\fi
+\ifbook\usepackage{nyubook}\fi
+
+\endinput

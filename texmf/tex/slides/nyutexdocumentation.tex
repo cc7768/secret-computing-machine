@@ -1,0 +1,88 @@
+\documentclass{article}
+\usepackage[paper]{nyutex}
+\begin{document}
+
+
+\title{NYU \TeX}
+\author{Lu\'{\i}s Cabral}
+\date{October 2014}
+\maketitle
+\thispagestyle{empty}\setcounter{page}1
+
+\firstfootnote{This is a simple document to illustrate various macros I created over \TeX\ and \LaTeX. The  \textbackslash{\tt firstfootnote} feature is one of them. It produces this unnumbered footnote in the paper's first page (typically the title page).}
+
+
+\oneline\oneline
+
+\section{Introduction}
+
+NYU \TeX\ is a series of macros (styles) for writing papers and slides in \TeX\ and \LaTeX. Although the macros live on top of \LaTeX's article document class, I use a series of original \TeX\ commands, so I simply designate the overall package as NYU \TeX. The macros are called with \verb|\usepackage{nyutex}|. One of the options is \verb|paper|, that is, \verb|\usepackage[paper]{nyutex}|. This is the one I am using for this document. It reformats the title page, the margin sizes, the way table and figure captions are printed, section headings, and so on. In the next sections I describe a few additional commands that I have defined in the package. I will not be writing detailed documentation for the macros. They are sufficiently simple that you can actually go to the source and look them up --- and possibly edit them to your own personal preferences. Happy \TeX ing!
+
+\section{Math stuff}
+
+Theorems and the like have been reformatted, e.g.,
+
+\begin{theorem}
+\label{th:main}
+Here is a theorem.
+\end{theorem}
+%
+There is also a \verb|\proof| environment:
+\oneline
+
+\begin{proof}Here is the proof.\end{proof}
+
+\noindent
+Sometimes, if the proof is in an appendix, you may prefer to write
+\oneline
+
+\begin{proof}[Theorem][th:main]Here is the proof.\end{proof}
+
+\noindent
+There are also many mini-macros that simplify math, e.g.,
+
+\bdm
+\valueat{\der{y}{x}}{x=0} = 1
+\edm
+There is a whole host of commands for derivatives, partial derivatives, etc.
+Several of these allow you to write stuff in paragraphs, e.g., partial derivatives: $\tpder{y}{x}=1$, which sometimes looks better than $\pder{y}{x}=1$.
+
+The command brackets creates scaled-up brackets around math stuff:
+\bdm
+\brackets{a^2+b^2} = c^2
+\edm
+Also available is \verb|\sbrackets|, as in $\sbrackets{a+b}$. Use \verb|\realset| and \verb|\complexset| for $\realset$ and $\complexset$. The pairs of commands \verb|\bdm| and \verb|\edm| simplify \verb|\begin{displaymath}| and \verb|\end{displaymath}|; \verb|\be| and \verb|\ee| do the same for numbered equations.
+
+\section{Other general stuff}
+Here are a few additional changes to formats.
+
+\blackbox{Dividers.} 
+I created \verb|\blackbox| and \verb|\whitebox| dividers. Sometimes these help creating subdivisions within a section, like the one I just did. 
+
+As you can see from Table \ref{tab:example}, table headings have been reformatted (the same applies to figure headings). Moreover the tabular environment was reformatted to produce shaded tables, which I think look better. Also, in addition to the columns of type \verb|p{}|, I also created columns of type \verb|q{}|, which is basically \verb|p{}| but right justified. Specifically, the format for Table \ref{tab:example} is \verb+p{10ex}|q{10ex}+. The top row is darker because it starts with the command \verb|\dgrayrow|.
+
+\begin{table}
+\caption{Example of how tabular was reformatted}
+\label{tab:example}
+\begin{tabular}{p{10ex}|q{10ex}}
+\dgrayrow Column 1 & Column 2 \snl
+Item 1 & 53 \snl
+Item 3 & 35 
+\end{tabular}
+\end{table}
+
+Finally, the command \verb|\shadedtext| allows you to print --- you guessed it --- shaded text.\footnote{I also changed the footnote format. Basically, the footnote numbers appear separated from the footnote text, giving it an overall appearance that I think is a little better.}
+
+\begin{center}
+\shadedtext{Here is an example of shaded text}
+\end{center}
+
+\section{Slides}
+
+By entering the option \verb|slides| when you can \verb|nyutex| you enter a completely new world: \verb|nyutexslies|. Specifically, write \verb|\usepackage[slide]{nyutex}| in the preamble. To learn more about slides, see the file \verb|nyuslidedocumentation.tex| and the corresponding file \verb|nyuslidedocumentation.pdf|
+
+\section{Graphs}
+
+The longest portion of my macros follows from the \verb|graph| option. I am still cleaning this up and will add it to this documentation file as soon as it's ready. It is invoked by writing \verb|\usepackage[graph]{nyutex}| in the preamble. Note that this may be cumulative with other options, such as \verb|paper| and \verb|slide|.
+
+\end{document}

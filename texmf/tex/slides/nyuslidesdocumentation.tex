@@ -1,0 +1,164 @@
+\documentclass[11pt]{article}
+\usepackage[slide]{nyutex}
+\setboolean{author}{true} % if true, prints out author's notes to self
+\setboolean{handout}{false} % if true, all slide repetitions are collapsed into one slide
+\setboolean{slidenumber}{false} % is true, slide number is included in footer
+\begin{document}
+
+
+\sternslidelogo
+
+\firstslide
+[by Lu\'{\i}s Cabral, {\em New York University}  \\[3ex]
+First release: September 2004 \\
+Current release: September 2014
+]
+{A \LaTeX\ macro for producing slides}
+
+\def\outlineslide{%
+\slideheader{Outline}
+\begin{list1}
+\slideitem{Introduction}
+\slideitem{Basic slides}
+\slideitem{Animated slides}
+\slideitem{Miscellaneous stuff}
+\slideitem{Final comments}
+\end{list1}
+\slidefooter}
+
+\outlineslide
+
+\newsection
+
+\slideheader{Why yet another slides macro?}
+\begin{list1}
+    \item There are many options for writing slides in LaTeX
+    \item I decided to create my own style file because I found the other ones have a lot of extra stuff and use a lot of memory. For example, it is difficult to use PicTex with beamer
+    \item Moreover, having access to the commands in a relatively easy way gives you a lot of flexibility in terms of what you can do.  My style file is relatively short and is easy to understand and tinker with
+    \item I also think that writing code is fun
+\end{list1}
+
+\slideheader{Important notes}
+\begin{list1}
+    \item The present distribution includes various files: nyutex.sty is the main style file; it includes several options, including the slide option, which is included in nyuslide.sty
+    \item In order to change and typeset the present file, nyuslidedocummentation.tex, you need to change the path to the files nyutex.sty and nyuslide.sty (or place all files in the same folder)
+    \item If you have any suggestion, please send it to luis.cabral\verb+@+nyu.edu
+\end{list1}
+
+\slidefooter
+
+\newsection
+
+\slideheader{Basic slides}
+\begin{list1}
+        \item A slide header is written with \verb|\slideheader{stuff}|
+        \item Bullet items are entered as follows
+            \begin{list2}
+                \item[] \verb|\begin{list1}|
+                \item[] \verb|\item stuff|
+                \item[] \ldots
+                \item[] \verb|\item stuff|
+                \item[] \verb|\end{list1}|
+            \end{list2}
+        \item You may create lower level lists with \verb|list2|
+        \item For a slide footer, enter \verb|\slidefooter|. It prints a footnote (optional argument) as well as a logo. The logo is defined by \verb|\def\slidelogo{yourlogo}|, where \verb|yourlogo| is by default nothing
+\end{list1}
+\slidefooter[Here is some text in the footer.]
+
+\newsection
+
+
+
+\repeatslide{4}{
+\slideheader{Repeat slide}
+\begin{list1}
+    \item You can use  {\footnotesize\tt\textbackslash repeatslide} to create animated slides. This command has one mandatory argument, the number of repetitions. Each repetition is a frame.
+    \item You can then use the commands {\footnotesize\tt\textbackslash atframe}, {\footnotesize\tt\textbackslash beforeframe}, {\footnotesize\tt\textbackslash afterframe}, each with two arguments: the reference frame number and the content to be placed at, before or after that frame number. Here is an example.
+\end{list1}
+\begin{picture}(200,50)
+\afterframe{2}{\put (0,10){\fbox{Here is a first object}}}
+\atframe{3}{\put (100,30){\fbox{Here is a second object}}}
+\atframe{4}{\put (100,-15){\fbox{Here is a third object}}}
+\end{picture}
+}
+
+\newsection
+
+\slideheader{Outline feature}
+\begin{list1}
+    \item A particularly important animated slide is the outline slide
+    \item First, you create the outline slide by typing \verb|\def\outlineslide{slide}|, where \verb|slide| is the slide itself
+    \item Now, if you type \verb|\outlineslide| you get the outline slide with all its bullet points
+    \item If instead you type \verb|\newsection|, then you get the outline slide with all its bullet points dimmed except the relevant one
+    \item See the source file if you still have questions
+\end{list1}
+\slidefooter
+
+\setboolean{slidenumber}{true}
+\slideheader{Some useful commands}
+\mytheorem{Proposition 1}{Gnus can be quite a gnusance.}
+\begin{list1}
+    \item The above is done with \verb|\mytheorem{title}}{text}|
+    \item \verb|\shortnote{stuff}|, \verb|\longnote{stuff}|, and \verb|\pagenote{stuff}| allow you to introduce notes to yourself \shortnote{Here's a short note}
+    \item Some features are controlled by boolean variables.  Their value can be changed anywhere with \verb|\setboolean{v}| where \verb|v| equals \verb|true| or \verb|false|
+    \item Here are the boolean variables I have currently defined:
+        \begin{list2}
+            \item author: if true, notes to self are printed
+            \item handout: if true, animation slides collapse into one
+            \item slidenumber: if true, slide number appears in footer
+        \end{list2}
+\end{list1}
+\slidefooter[This slide has a slide number because I wrote {\tiny\tt\textbackslash setboolean\{slidenumber\}\{true\}}]
+
+\setboolean{slidenumber}{false}
+
+\newsection
+
+\slideheader{Final comments}
+\begin{list1}
+\item I have many more slide commands that I will share upon request (e.g., slide items shown  sequentially)
+\item I also have other macros, most important \verb|nyugraph.sty|, which can be used in conjunction with the slide option
+\item Except for \verb|nyugraph.sty|, the source code of my macros is so short that you can actually go through it and edit as you wish
+\item As always, the best way to get started is to build from the example files I provide:
+\begin{list2}
+\item \verb|nyutexdocummentation.tex| (general style commands, paper style, and graph commands)
+\item \verb|nyuslidesdocummentation.tex| (this file, dealing with slides)
+\end{list2}
+\end{list1}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

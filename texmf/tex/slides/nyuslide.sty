@@ -1,0 +1,141 @@
+%
+%   LaTeX slides macro
+%   by Luis Cabral (luismbcabral@gmail.com)
+%   (c) 2004-2014
+%   For the past few years, I have been working on this sty file.  Ask me for the latest version.
+%
+%   This is a very "light" macro that does a decent job and does not take up a lot of memory.
+%   Unlike beamer and other macros, it is compatible with PicTeX and other memory intensive macros.
+%
+\usepackage[paperwidth=120mm,paperheight=90mm,pdftex,top=0in,bottom=0in,left=.35in,right=.35in]{geometry}
+\usepackage{sfmath}
+\renewcommand\familydefault\sfdefault
+\definecolor{background}{RGB}{188, 195, 203}
+\raggedright
+\pdftrue
+\ifhandout\definecolor{background}{rgb}{1,1,1}\fi
+%
+%   Item list and parameters.  You can play around with these,
+%   For example, the bullet character is set at $\bullet$, but you can change it.
+%   Major, minor, and minorminor refers to the three levels of lists I consider.
+%
+\newenvironment{list1}{\begin{list}{\majoritembullet}{\majorlistparameters}}{\end{list}}
+\newenvironment{list2}{\vspace*{-.5ex}\begin{list}{\minoritembullet}{\minorlistparameters\small}}{\end{list}\normalsize}
+\def\majoritembullet{{\color{title}\raisebox{0.3ex}{\small$\bullet$}}}
+\def\minoritembullet{{\color{title}\raisebox{0ex}{$-$}}}
+\def\minorminoritembullet{{\color{title}\raisebox{0ex}{\raisebox{.5ex}{\tiny$\circ$}}}}
+\def\majoritembulletdimmed{{\color{gray}\raisebox{0.3ex}{\small$\bullet$}}}
+\def\majorlistparameters{\labelsep 1.5ex \leftmargin 3ex \labelwidth 2ex\itemsep .5ex \baselineskip 2.5ex}%
+\def\minorlistparameters{\labelsep 1.5ex \leftmargin 3ex \labelwidth 2ex\itemsep .0ex \baselineskip 2.5ex}%
+%
+%   repeatslide
+%
+\long\def\repeatslide#1#2{%
+    \ifhandout
+        #2
+    \else
+        \forloop{frame}{1}{\value{frame}<#1}{\setcounter{itemnumber}{0}#2\addtocounter{page}{-1}}%
+        \setcounter{itemnumber}{0}#2%
+    \fi
+}
+\newcommand\atframe[2]{\ifthenelse{\theframe=#1\or\boolean{handout}}{#2}{}}
+\newcommand\beforeframe[2]{\ifthenelse{\theframe=#1\or\theframe<#1\or\boolean{handout}}{#2}{}}
+\newcommand\afterframe[2]{\ifthenelse{\theframe=#1\or\theframe>#1\or\boolean{handout}}{#2}{}}
+\newcommand\onlyonce[1]{\ifthenelse{\boolean{handout}\or\theitemnumber=\theframe\or\theslidetype=0}{#1}{}}
+\newcommand\backtoslide[2]{\ifhandout\else\setcounter{slidetype}{#1}\setcounter{frame}{#2}\setcounter{itemnumber}{0}\currentslide\fi}
+%
+% slideitem
+%
+\newcommand\slideitem[1]{%
+    \def\completeitem{\item#1}
+    \ifhandout
+        \item #1
+    \else
+        \ifthenelse{\theslidetype=0}{%
+            \addtocounter{itemnumber}{1}
+            \completeitem
+        }{}
+        \ifthenelse{\theslidetype=1}{%
+                    \addtocounter{itemnumber}{1}
+                    \ifthenelse{\theitemnumber<\theframe\or\theitemnumber=\theframe}{\completeitem}{}
+        }{}
+        \ifthenelse{\theslidetype=2}{%
+            \addtocounter{itemnumber}{1}
+            \ifthenelse{\theitemnumber=\theframe}{\completeitem}{\item[\majoritembulletdimmed]{\color{gray}#1}}
+        }{}
+    \fi
+}
+%
+% firstslide
+%
+\DeclareDocumentCommand\firstslide{om}{%
+	\vspace*{\baselineskip}
+	\parbox{100ex}{\baselineskip4ex\textcolor{title}{\Large\bf #2}}
+	\IfNoValueF{#1}{\par\vspace*{2\baselineskip}\parbox{100ex}{\baselineskip3.5ex{\large #1}}}
+	\slidefooter
+}
+%
+%   Miscellaneous commands
+%
+\DeclareDocumentCommand\shortnote{m}{\ifauthor\hfill\fbox{\tiny#1}\fi}
+\newcommand\longnote[1]{\ifauthor\fbox{\parbox{\textwidth}{\tiny#1}}\fi}
+\newcommand\pagenote[1]{\ifauthor\newpage\addtocounter{page}{-1}\mbox{}\par\parbox{\textwidth}{\parskip5pt\scriptsize#1}\fi}
+\DeclareDocumentCommand\mytheorem{mm}{\par\vspace{.5\baselineskip}{\bf \color{title}{#1.}} {\sl #2}\par}
+%
+%
+%   slide style
+%
+\definecolor{title}{RGB}{0, 0 ,0}
+\definecolor{titleshade}{RGB}{87,6,140}
+\pagecolor{background}
+\def\slidelogo{}
+
+\def\sternslidelogo{%
+\def\slidelogo{\resizebox{60pt}{!}{\includegraphics{/home/chase/logos/SternLogos/stern_black1.png}}\hspace*{2pt}}
+}
+%
+%   slide header and footer
+%
+\newdimen\logowidth
+\newdimen\footerwidth
+\setlength\footerwidth{331pt}\addtolength\footerwidth{-1pt}
+\settowidth\logowidth{\slidelogo}
+\addtolength\footerwidth{-\logowidth}
+%
+\DeclareDocumentCommand\slideheader{m}{%
+	\setcounter{footnote}0%
+    \newpage\mbox{}\vspace*{-5pt}\par%
+    \hspace*{-19pt}\colorbox{titleshade}{\hspace*{5pt}\raisebox{3.5ex}{}\raisebox{-1ex}{}\color{title}%
+    {\Large\textbf{#1}}\hspace*{5in}}\vspace*{1ex}%
+}
+\DeclareDocumentCommand\slidefooter{o}{%
+    \vspace*{-100pt}\vfill\hspace*{-22pt}\parbox[b]{336pt}{%
+        \ifthenelse{\boolean{slidenumber}}{\addtolength\footerwidth{-4ex}\parbox[b]{4ex}{\tiny\mbox{}\vfill\thepage}}{}%
+        \IfNoValueF{#1}{\parbox[b]{\footerwidth}{\tiny#1}}\hfill\slidelogo}%
+    \par\mbox{}\vspace*{-2ex}\mbox{}
+}
+%
+%   Outline feature
+%
+\newcounter{tempslidetype}
+\newcommand{\outline}[1]{%
+    \setcounter{tempslidetype}{\theslidetype}
+    \setcounter{slidetype}{2}
+    \setcounter{frame}{#1}%
+    \setcounter{itemnumber}{0}%
+    \ifthenelse{\boolean{handout}}{\setboolean{handout}{false}\outlineslide\setboolean{handout}{true}}{\outlineslide}%
+    \setcounter{slidetype}{\thetempslidetype}
+}
+\newcommand{\suboutline}[1]{%
+    \setcounter{tempslidetype}{\theslidetype}
+    \setcounter{slidetype}{2}
+    \setcounter{frame}{#1}%
+    \setcounter{itemnumber}{0}%
+    \suboutlineslide%
+    \setcounter{slidetype}{\thetempslidetype}
+}
+\newcommand{\newsection}{\addtocounter{outlinesection}{1}\outline{\theoutlinesection}}
+%
+% miscellaneous commands
+%
+\def\emptyslide{\newpage\mbox{}}
