@@ -1,0 +1,1013 @@
+{
+	"folder_history":
+	[
+		"/home/chase/.julia/v0.4/QuantEcon",
+		"/home/chase/Documents/Academic/PaperSummaries/Summaries",
+		"/home/chase/Documents/Academic/PaperSummaries",
+		"/home/chase/Documents/School/NYU/NYU_Classes",
+		"/home/chase/Documents/Academic/Projects/QE/quant-econ-private",
+		"/home/chase/Documents/Academic/Projects/QE/quant-econ"
+	],
+	"last_version": 3065,
+	"last_window_id": 3,
+	"log_indexing": false,
+	"settings":
+	{
+		"new_window_height": 452.0,
+		"new_window_settings":
+		{
+			"auto_complete":
+			{
+				"selected_items":
+				[
+				]
+			},
+			"build_system": "",
+			"command_palette":
+			{
+				"height": 375.0,
+				"selected_items":
+				[
+					[
+						"previ ",
+						"Markdown Preview: Preview in Browser"
+					],
+					[
+						"synt late	",
+						"Set Syntax: LaTeX"
+					],
+					[
+						"syntlat",
+						"Set Syntax: LaTeX"
+					],
+					[
+						"previ",
+						"Markdown Preview: Preview in Browser"
+					],
+					[
+						"close",
+						"Project: Close"
+					],
+					[
+						"pre",
+						"Markdown Preview: Preview in Browser"
+					],
+					[
+						"preview",
+						"Markdown Preview: Preview in Browser"
+					],
+					[
+						"synta p",
+						"Set Syntax: Python"
+					],
+					[
+						"rpeview",
+						"Markdown Preview: Preview in Browser"
+					],
+					[
+						"disable",
+						"Package Control: Disable Package"
+					],
+					[
+						"proj",
+						"Project: Close"
+					],
+					[
+						"instal",
+						"Package Control: Install Package"
+					],
+					[
+						"syn mata",
+						"Set Syntax: MATLAB"
+					],
+					[
+						"synta jul",
+						"Set Syntax: Julia"
+					],
+					[
+						"remove",
+						"Package Control: Remove Package"
+					],
+					[
+						"inst",
+						"Package Control: Install Package"
+					],
+					[
+						"set juli",
+						"Set Syntax: Julia"
+					],
+					[
+						"unicod",
+						"UnicodeMath: Insert"
+					],
+					[
+						"fold",
+						"Project: Add Folder"
+					],
+					[
+						"synta pyth",
+						"Set Syntax: Python"
+					],
+					[
+						"install",
+						"Package Control: Install Package"
+					],
+					[
+						"isntall",
+						"Colorsublime: Install Theme"
+					],
+					[
+						"colo",
+						"Colorsublime: Install Theme"
+					],
+					[
+						"color",
+						"Colorsublime: Install Theme"
+					]
+				],
+				"width": 579.0
+			},
+			"console":
+			{
+				"height": 139.0,
+				"history":
+				[
+					"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) ",
+					" import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
+				]
+			},
+			"distraction_free":
+			{
+				"menu_visible": true,
+				"show_minimap": false,
+				"show_open_files": false,
+				"show_tabs": false,
+				"side_bar_visible": false,
+				"status_bar_visible": false
+			},
+			"file_history":
+			[
+				"/home/chase/Downloads/nyutex/nyutex.sty",
+				"/home/chase/Downloads/nyutex/nyuslide.sty",
+				"/home/chase/.config/sublime-text-3/Packages/User/LaTeXTools.sublime-settings",
+				"/home/chase/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+				"/home/chase/Documents/SublimeProjects/papersummaries.sublime-project",
+				"/home/chase/Documents/School/NYU/NYU_Classes/SecondYear/ContTimeMacro/Homework/ProblemSet1/problemset1.tex",
+				"/home/chase/Documents/Academic/PaperSummaries/Summaries/ChariDovisKehoe2014_wp/slides/ChariDovisKehoe2014_GMRG.tex",
+				"/home/chase/Documents/Academic/PaperSummaries/.gitignore",
+				"/usr/share/texmf/tex/latex/beamer/base/themes/theme/beamerthemeBoadilla.sty",
+				"/usr/share/texmf/tex/latex/beamer/base/themes/color/beamercolorthemewhale.sty",
+				"/usr/share/texmf/tex/latex/beamer/base/themes/color/beamercolorthemenyu.sty",
+				"/usr/share/texmf/tex/latex/beamer/base/beamerbasetemplates.sty",
+				"/usr/share/texmf/tex/latex/beamer/base/beamerbasethemes.sty",
+				"/usr/share/texmf/tex/latex/beamer/base/beamer.cls",
+				"/usr/share/texmf/tex/latex/beamer/base/themes/outer/beamerouterthemedefault.sty",
+				"/home/chase/Documents/Academic/PaperSummaries/README.md",
+				"/home/chase/Documents/Academic/PaperSummaries/new_summary.py",
+				"/home/chase/Documents/Academic/PaperSummaries/PaperSummaries.bib",
+				"/home/chase/Documents/Academic/PaperSummaries/Summaries/TrejosWright1995/TrejosWright1995.md",
+				"/home/chase/Documents/Academic/PaperSummaries/Summaries/KiyotakiWright1991/KiyotakiWright1991.md",
+				"/home/chase/Documents/School/NYU/NYU_Classes/new_hw.py",
+				"/home/chase/.config/sublime-text-3/Packages/User/Python.sublime-settings",
+				"/home/chase/Documents/Academic/PaperSummaries/test.py",
+				"/home/chase/Documents/Academic/PaperSummaries/Summaries/ColemanColeman2014/ColemanColeman2014.md",
+				"/home/chase/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
+				"/home/chase/Documents/Academic/PaperSummaries/test.py\\",
+				"/home/chase/Documents/Academic/PaperSummaries/Summaries/Monetary/KiyotakiWright1991.md",
+				"/home/chase/Documents/Academic/PaperSummaries/Summaries/Monetary/KiyotakiWright1991.html",
+				"/home/chase/.config/sublime-text-3/Packages/User/Markdown.sublime-settings",
+				"/tmp/gensys-1.m",
+				"/home/chase/Programming/julia/usr/share/julia/base/linalg/factorization.jl",
+				"/home/chase/Programming/julia/usr/share/julia/base/linalg/lapack.jl",
+				"/home/chase/.julia/v0.4/QuantEcon/src/gensys.jl",
+				"/home/chase/.config/sublime-text-3/Packages/IJulia/Sublime-IJulia.sublime-settings",
+				"/home/chase/.config/sublime-text-3/Packages/User/Sublime-IJulia.sublime-settings",
+				"/home/chase/.zshrc",
+				"/home/chase/Programming/julia/usr/share/julia/base/int.jl",
+				"/home/chase/Dropbox/NoFaceBook/Problem Sets - Peifan Wu/Metrics/Spring/Q4/PS2/solvemodel.m",
+				"/home/chase/Documents/School/NYU/NYU_Classes/SecondYear/BayesianMethods/Homework/Homework1.jl",
+				"/home/chase/.config/sublime-text-3/Packages/Default/Default (Linux).sublime-keymap",
+				"/home/chase/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
+				"/home/chase/.config/sublime-text-3/Packages/User/Julia.sublime-settings",
+				"/home/chase/.config/sublime-text-3/Packages/UnicodeMath/UnicodeMath.sublime-settings",
+				"/home/chase/Documents/School/NYU/NYU_Classes/FirstYear/Micro/Semester_2/Pearce/Review/concepts/sequential.tex",
+				"/home/chase/Documents/School/NYU/NYU_Classes/SecondYear/monetary_theory/filler.txt",
+				"/home/chase/Documents/School/NYU/NYU_Classes/SecondYear/monetary_theory/readings/filler.txt",
+				"/home/chase/Documents/School/NYU/NYU_Classes/Untitled0.ipynb",
+				"/tmp/prodt-1.m",
+				"/usr/share/applications/defaults.list",
+				"/home/chase/Documents/School/NYU/NYUclasses/Fall2013/Metrics/Data/commute.csv",
+				"/home/chase/Desktop/Junk/gibbsgarbage.jl",
+				"/home/chase/Documents/Academic/Research/PaperSummaries/mybib.bib",
+				"/home/chase/Desktop/Junk/approx_brownian.py",
+				"/home/chase/Documents/Academic/Projects/QE/quant-econ/quantecon/tests/test_lqcontrol.py",
+				"/home/chase/Desktop/Junk/test.py",
+				"/home/chase/.juliarc.jl",
+				"/etc/ssh/ssh_config",
+				"/etc/ssh/sshd_config",
+				"/home/chase/.ssh/config",
+				"/etc/issue.net",
+				"/home/chase/.juliarc",
+				"/home/chase/.juliarcf",
+				"/home/chase/Desktop/test.rst",
+				"/home/chase/.config/sublime-text-3/Packages/User/reStructuredText.sublime-settings",
+				"/home/chase/Desktop/test.tex",
+				"/home/chase/.config/sublime-text-3/Packages/User/LaTeX.sublime-settings",
+				"/home/chase/Desktop/test.py",
+				"/home/chase/Programming/julia/Makefile",
+				"/home/chase/Programming/julia/.gitconfig",
+				"/home/chase/.bashrc"
+			],
+			"find":
+			{
+				"height": 37.0
+			},
+			"find_in_files":
+			{
+				"height": 95.0,
+				"where_history":
+				[
+					""
+				]
+			},
+			"find_state":
+			{
+				"case_sensitive": false,
+				"find_history":
+				[
+					"color{title",
+					"title",
+					"color",
+					"background",
+					"slide",
+					"rgb",
+					"title",
+					"slidelogo",
+					"stern",
+					"itemize",
+					"auto",
+					"dir_name",
+					"z^",
+					"z^{*}",
+					"nondegenerate-",
+					"=",
+					"Uniform(",
+					"v0.3",
+					"gges",
+					"fwt",
+					"alt+shift+up",
+					"gedit",
+					"-.-",
+					"CXX",
+					"ac_ct_CXX",
+					"CXXCPP",
+					"CXX"
+				],
+				"highlight": true,
+				"in_selection": false,
+				"preserve_case": false,
+				"regex": false,
+				"replace_history":
+				[
+				],
+				"reverse": false,
+				"show_context": true,
+				"use_buffer2": false,
+				"whole_word": false,
+				"wrap": true
+			},
+			"incremental_find":
+			{
+				"height": 21.0
+			},
+			"input":
+			{
+				"height": 31.0
+			},
+			"menu_visible": true,
+			"output.exec":
+			{
+				"height": 90.0
+			},
+			"output.find_results":
+			{
+				"height": 102.0
+			},
+			"output.markdown":
+			{
+				"height": 90.0
+			},
+			"replace":
+			{
+				"height": 66.0
+			},
+			"save_all_on_build": true,
+			"select_file":
+			{
+				"height": 0.0,
+				"selected_items":
+				[
+					[
+						"kiy",
+						"Monetary/KiyotakiWright1991.md"
+					]
+				],
+				"width": 0.0
+			},
+			"select_project":
+			{
+				"height": 500.0,
+				"selected_items":
+				[
+					[
+						"my",
+						"~/Documents/SublimeProjects/myclasses.sublime-project"
+					],
+					[
+						"",
+						"~/Documents/SublimeProjects/quantecon.sublime-project"
+					],
+					[
+						"qua",
+						"~/Documents/SublimeProjects/quantecon.sublime-project"
+					],
+					[
+						"m",
+						"~/Documents/SublimeProjects/myclasses.sublime-project"
+					]
+				],
+				"width": 380.0
+			},
+			"select_symbol":
+			{
+				"height": 0.0,
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"show_minimap": false,
+			"show_open_files": false,
+			"show_tabs": true,
+			"side_bar_visible": true,
+			"side_bar_width": 330.0,
+			"status_bar_visible": true,
+			"template_settings":
+			{
+			}
+		},
+		"new_window_width": 640.0
+	},
+	"windows":
+	[
+		{
+			"auto_complete":
+			{
+				"selected_items":
+				[
+				]
+			},
+			"buffers":
+			[
+				{
+					"file": "/home/chase/Documents/Academic/PaperSummaries/Summaries/ChariDovisKehoe2014_wp/ChariDovisKehoe2014.md",
+					"settings":
+					{
+						"buffer_size": 3531,
+						"line_ending": "Unix"
+					}
+				},
+				{
+					"file": "/home/chase/texmf/tex/slides/nyutex.sty",
+					"settings":
+					{
+						"buffer_size": 14404,
+						"line_ending": "Unix"
+					}
+				},
+				{
+					"file": "/home/chase/texmf/tex/slides/nyuslidesdocumentation.tex",
+					"settings":
+					{
+						"buffer_size": 5822,
+						"line_ending": "Unix"
+					}
+				},
+				{
+					"file": "/home/chase/Documents/Academic/PaperSummaries/Summaries/ChariDovisKehoe2014_wp/slides/ChariDovisKehoe2014Slides.tex",
+					"settings":
+					{
+						"buffer_size": 5399,
+						"line_ending": "Unix",
+						"name": "test.tex"
+					}
+				},
+				{
+					"file": "/home/chase/Documents/Academic/PaperSummaries/Summaries/ChariDovisKehoe2014_wp/slides/ChariDovisKehoe2014_GMRG.tex",
+					"settings":
+					{
+						"buffer_size": 8428,
+						"line_ending": "Unix"
+					}
+				},
+				{
+					"file": "/home/chase/texmf/tex/slides/nyuslide.sty",
+					"settings":
+					{
+						"buffer_size": 5510,
+						"line_ending": "Unix"
+					}
+				}
+			],
+			"build_system": "",
+			"command_palette":
+			{
+				"height": 375.0,
+				"selected_items":
+				[
+					[
+						"previ ",
+						"Markdown Preview: Preview in Browser"
+					],
+					[
+						"synt late	",
+						"Set Syntax: LaTeX"
+					],
+					[
+						"syntlat",
+						"Set Syntax: LaTeX"
+					],
+					[
+						"previ",
+						"Markdown Preview: Preview in Browser"
+					],
+					[
+						"close",
+						"Project: Close"
+					],
+					[
+						"pre",
+						"Markdown Preview: Preview in Browser"
+					],
+					[
+						"preview",
+						"Markdown Preview: Preview in Browser"
+					],
+					[
+						"synta p",
+						"Set Syntax: Python"
+					],
+					[
+						"rpeview",
+						"Markdown Preview: Preview in Browser"
+					],
+					[
+						"disable",
+						"Package Control: Disable Package"
+					],
+					[
+						"proj",
+						"Project: Close"
+					],
+					[
+						"instal",
+						"Package Control: Install Package"
+					],
+					[
+						"syn mata",
+						"Set Syntax: MATLAB"
+					],
+					[
+						"synta jul",
+						"Set Syntax: Julia"
+					],
+					[
+						"remove",
+						"Package Control: Remove Package"
+					],
+					[
+						"inst",
+						"Package Control: Install Package"
+					],
+					[
+						"set juli",
+						"Set Syntax: Julia"
+					],
+					[
+						"unicod",
+						"UnicodeMath: Insert"
+					],
+					[
+						"fold",
+						"Project: Add Folder"
+					],
+					[
+						"synta pyth",
+						"Set Syntax: Python"
+					],
+					[
+						"install",
+						"Package Control: Install Package"
+					],
+					[
+						"isntall",
+						"Colorsublime: Install Theme"
+					],
+					[
+						"colo",
+						"Colorsublime: Install Theme"
+					],
+					[
+						"color",
+						"Colorsublime: Install Theme"
+					]
+				],
+				"width": 579.0
+			},
+			"console":
+			{
+				"height": 139.0,
+				"history":
+				[
+					"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) ",
+					" import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
+				]
+			},
+			"distraction_free":
+			{
+				"menu_visible": true,
+				"show_minimap": false,
+				"show_open_files": false,
+				"show_tabs": false,
+				"side_bar_visible": false,
+				"status_bar_visible": false
+			},
+			"expanded_folders":
+			[
+				"/home/chase/Documents/Academic/PaperSummaries/Summaries",
+				"/home/chase/Documents/Academic/PaperSummaries/Summaries/ChariDovisKehoe2014_wp",
+				"/home/chase/Documents/Academic/PaperSummaries/Summaries/ChariDovisKehoe2014_wp/slides"
+			],
+			"file_history":
+			[
+				"/home/chase/Downloads/nyutex/nyutex.sty",
+				"/home/chase/Downloads/nyutex/nyuslide.sty",
+				"/home/chase/.config/sublime-text-3/Packages/User/LaTeXTools.sublime-settings",
+				"/home/chase/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+				"/home/chase/Documents/SublimeProjects/papersummaries.sublime-project",
+				"/home/chase/Documents/School/NYU/NYU_Classes/SecondYear/ContTimeMacro/Homework/ProblemSet1/problemset1.tex",
+				"/home/chase/Documents/Academic/PaperSummaries/Summaries/ChariDovisKehoe2014_wp/slides/ChariDovisKehoe2014_GMRG.tex",
+				"/home/chase/Documents/Academic/PaperSummaries/.gitignore",
+				"/usr/share/texmf/tex/latex/beamer/base/themes/theme/beamerthemeBoadilla.sty",
+				"/usr/share/texmf/tex/latex/beamer/base/themes/color/beamercolorthemewhale.sty",
+				"/usr/share/texmf/tex/latex/beamer/base/themes/color/beamercolorthemenyu.sty",
+				"/usr/share/texmf/tex/latex/beamer/base/beamerbasetemplates.sty",
+				"/usr/share/texmf/tex/latex/beamer/base/beamerbasethemes.sty",
+				"/usr/share/texmf/tex/latex/beamer/base/beamer.cls",
+				"/usr/share/texmf/tex/latex/beamer/base/themes/outer/beamerouterthemedefault.sty",
+				"/home/chase/Documents/Academic/PaperSummaries/README.md",
+				"/home/chase/Documents/Academic/PaperSummaries/new_summary.py",
+				"/home/chase/Documents/Academic/PaperSummaries/PaperSummaries.bib",
+				"/home/chase/Documents/Academic/PaperSummaries/Summaries/TrejosWright1995/TrejosWright1995.md",
+				"/home/chase/Documents/Academic/PaperSummaries/Summaries/KiyotakiWright1991/KiyotakiWright1991.md",
+				"/home/chase/Documents/School/NYU/NYU_Classes/new_hw.py",
+				"/home/chase/.config/sublime-text-3/Packages/User/Python.sublime-settings",
+				"/home/chase/Documents/Academic/PaperSummaries/test.py",
+				"/home/chase/Documents/Academic/PaperSummaries/Summaries/ColemanColeman2014/ColemanColeman2014.md",
+				"/home/chase/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
+				"/home/chase/Documents/Academic/PaperSummaries/test.py\\",
+				"/home/chase/Documents/Academic/PaperSummaries/Summaries/Monetary/KiyotakiWright1991.md",
+				"/home/chase/Documents/Academic/PaperSummaries/Summaries/Monetary/KiyotakiWright1991.html",
+				"/home/chase/.config/sublime-text-3/Packages/User/Markdown.sublime-settings",
+				"/tmp/gensys-1.m",
+				"/home/chase/Programming/julia/usr/share/julia/base/linalg/factorization.jl",
+				"/home/chase/Programming/julia/usr/share/julia/base/linalg/lapack.jl",
+				"/home/chase/.julia/v0.4/QuantEcon/src/gensys.jl",
+				"/home/chase/.config/sublime-text-3/Packages/IJulia/Sublime-IJulia.sublime-settings",
+				"/home/chase/.config/sublime-text-3/Packages/User/Sublime-IJulia.sublime-settings",
+				"/home/chase/.zshrc",
+				"/home/chase/Programming/julia/usr/share/julia/base/int.jl",
+				"/home/chase/Dropbox/NoFaceBook/Problem Sets - Peifan Wu/Metrics/Spring/Q4/PS2/solvemodel.m",
+				"/home/chase/Documents/School/NYU/NYU_Classes/SecondYear/BayesianMethods/Homework/Homework1.jl",
+				"/home/chase/.config/sublime-text-3/Packages/Default/Default (Linux).sublime-keymap",
+				"/home/chase/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
+				"/home/chase/.config/sublime-text-3/Packages/User/Julia.sublime-settings",
+				"/home/chase/.config/sublime-text-3/Packages/UnicodeMath/UnicodeMath.sublime-settings",
+				"/home/chase/Documents/School/NYU/NYU_Classes/FirstYear/Micro/Semester_2/Pearce/Review/concepts/sequential.tex",
+				"/home/chase/Documents/School/NYU/NYU_Classes/SecondYear/monetary_theory/filler.txt",
+				"/home/chase/Documents/School/NYU/NYU_Classes/SecondYear/monetary_theory/readings/filler.txt",
+				"/home/chase/Documents/School/NYU/NYU_Classes/Untitled0.ipynb",
+				"/tmp/prodt-1.m",
+				"/usr/share/applications/defaults.list",
+				"/home/chase/Documents/School/NYU/NYUclasses/Fall2013/Metrics/Data/commute.csv",
+				"/home/chase/Desktop/Junk/gibbsgarbage.jl",
+				"/home/chase/Documents/Academic/Research/PaperSummaries/mybib.bib",
+				"/home/chase/Desktop/Junk/approx_brownian.py",
+				"/home/chase/Documents/Academic/Projects/QE/quant-econ/quantecon/tests/test_lqcontrol.py",
+				"/home/chase/Desktop/Junk/test.py",
+				"/home/chase/.juliarc.jl",
+				"/etc/ssh/ssh_config",
+				"/etc/ssh/sshd_config",
+				"/home/chase/.ssh/config",
+				"/etc/issue.net",
+				"/home/chase/.juliarc",
+				"/home/chase/.juliarcf",
+				"/home/chase/Desktop/test.rst",
+				"/home/chase/.config/sublime-text-3/Packages/User/reStructuredText.sublime-settings",
+				"/home/chase/Desktop/test.tex",
+				"/home/chase/.config/sublime-text-3/Packages/User/LaTeX.sublime-settings",
+				"/home/chase/Desktop/test.py",
+				"/home/chase/Programming/julia/Makefile",
+				"/home/chase/Programming/julia/.gitconfig",
+				"/home/chase/.bashrc"
+			],
+			"find":
+			{
+				"height": 44.0
+			},
+			"find_in_files":
+			{
+				"height": 95.0,
+				"where_history":
+				[
+					""
+				]
+			},
+			"find_state":
+			{
+				"case_sensitive": false,
+				"find_history":
+				[
+					")$$\n",
+					"itemize",
+					"author",
+					"firstslide",
+					"first",
+					"$\\\\ ",
+					"Xi_t",
+					"itemize",
+					"}\n",
+					"color{title",
+					"title",
+					"color",
+					"background",
+					"slide",
+					"rgb",
+					"title",
+					"slidelogo",
+					"stern",
+					"itemize",
+					"auto",
+					"dir_name",
+					"z^",
+					"z^{*}",
+					"nondegenerate-",
+					"=",
+					"Uniform(",
+					"v0.3",
+					"gges",
+					"fwt",
+					"alt+shift+up",
+					"gedit",
+					"-.-",
+					"CXX",
+					"ac_ct_CXX",
+					"CXXCPP",
+					"CXX"
+				],
+				"highlight": true,
+				"in_selection": false,
+				"preserve_case": false,
+				"regex": false,
+				"replace_history":
+				[
+				],
+				"reverse": false,
+				"show_context": true,
+				"use_buffer2": false,
+				"whole_word": false,
+				"wrap": true
+			},
+			"groups":
+			[
+				{
+					"selected": 3,
+					"sheets":
+					[
+						{
+							"buffer": 0,
+							"file": "/home/chase/Documents/Academic/PaperSummaries/Summaries/ChariDovisKehoe2014_wp/ChariDovisKehoe2014.md",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 3531,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										416,
+										416
+									]
+								],
+								"settings":
+								{
+									"parser": "markdown",
+									"syntax": "Packages/Markdown/Markdown.tmLanguage",
+									"target": "disk"
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 5,
+							"type": "text"
+						},
+						{
+							"buffer": 1,
+							"file": "/home/chase/texmf/tex/slides/nyutex.sty",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 14404,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										6564,
+										6564
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/LaTeX/TeX.tmLanguage",
+									"tab_size": 2,
+									"translate_tabs_to_spaces": true
+								},
+								"translation.x": 0.0,
+								"translation.y": 2846.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 4,
+							"type": "text"
+						},
+						{
+							"buffer": 2,
+							"file": "/home/chase/texmf/tex/slides/nyuslidesdocumentation.tex",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 5822,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										2717,
+										2717
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/LaTeX/LaTeX.tmLanguage",
+									"tab_size": 4,
+									"translate_tabs_to_spaces": true
+								},
+								"translation.x": 0.0,
+								"translation.y": 805.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 3,
+							"type": "text"
+						},
+						{
+							"buffer": 3,
+							"file": "/home/chase/Documents/Academic/PaperSummaries/Summaries/ChariDovisKehoe2014_wp/slides/ChariDovisKehoe2014Slides.tex",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 5399,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										3068,
+										3068
+									]
+								],
+								"settings":
+								{
+									"auto_name": "test.tex",
+									"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
+								},
+								"translation.x": 0.0,
+								"translation.y": 999.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 0,
+							"type": "text"
+						}
+					]
+				},
+				{
+					"selected": 0,
+					"sheets":
+					[
+						{
+							"buffer": 4,
+							"file": "/home/chase/Documents/Academic/PaperSummaries/Summaries/ChariDovisKehoe2014_wp/slides/ChariDovisKehoe2014_GMRG.tex",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 8428,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										3858,
+										3858
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/LaTeX/LaTeX.tmLanguage",
+									"tab_size": 2,
+									"translate_tabs_to_spaces": true
+								},
+								"translation.x": 0.0,
+								"translation.y": 1638.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 1,
+							"type": "text"
+						},
+						{
+							"buffer": 5,
+							"file": "/home/chase/texmf/tex/slides/nyuslide.sty",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 5510,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										3052,
+										3052
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/LaTeX/TeX.tmLanguage",
+									"tab_size": 4,
+									"translate_tabs_to_spaces": true
+								},
+								"translation.x": 0.0,
+								"translation.y": 843.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 2,
+							"type": "text"
+						}
+					]
+				}
+			],
+			"incremental_find":
+			{
+				"height": 21.0
+			},
+			"input":
+			{
+				"height": 31.0
+			},
+			"layout":
+			{
+				"cells":
+				[
+					[
+						0,
+						0,
+						1,
+						1
+					],
+					[
+						0,
+						1,
+						1,
+						2
+					]
+				],
+				"cols":
+				[
+					0.0,
+					1.0
+				],
+				"rows":
+				[
+					0.0,
+					0.5,
+					1.0
+				]
+			},
+			"menu_visible": true,
+			"output.exec":
+			{
+				"height": 90.0
+			},
+			"output.find_results":
+			{
+				"height": 102.0
+			},
+			"output.markdown":
+			{
+				"height": 90.0
+			},
+			"position": "0,1,0,0,0,458,148,1098,600,2720,1024",
+			"project": "papersummaries.sublime-project",
+			"replace":
+			{
+				"height": 66.0
+			},
+			"save_all_on_build": true,
+			"select_file":
+			{
+				"height": 0.0,
+				"selected_items":
+				[
+					[
+						"kiy",
+						"Monetary/KiyotakiWright1991.md"
+					]
+				],
+				"width": 0.0
+			},
+			"select_project":
+			{
+				"height": 500.0,
+				"selected_items":
+				[
+					[
+						"my",
+						"~/Documents/SublimeProjects/myclasses.sublime-project"
+					],
+					[
+						"",
+						"~/Documents/SublimeProjects/quantecon.sublime-project"
+					],
+					[
+						"qua",
+						"~/Documents/SublimeProjects/quantecon.sublime-project"
+					],
+					[
+						"m",
+						"~/Documents/SublimeProjects/myclasses.sublime-project"
+					]
+				],
+				"width": 380.0
+			},
+			"select_symbol":
+			{
+				"height": 0.0,
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"selected_group": 0,
+			"settings":
+			{
+			},
+			"show_minimap": false,
+			"show_open_files": false,
+			"show_tabs": true,
+			"side_bar_visible": true,
+			"side_bar_width": 330.0,
+			"status_bar_visible": true,
+			"template_settings":
+			{
+			},
+			"window_id": 1,
+			"workspace_name": "/home/chase/Documents/SublimeProjects/papersummaries.sublime-workspace"
+		}
+	],
+	"workspaces":
+	{
+		"recent_workspaces":
+		[
+			"/home/chase/Documents/SublimeProjects/papersummaries.sublime-workspace",
+			"/home/chase/Documents/SublimeProjects/myclasses.sublime-workspace",
+			"/home/chase/Documents/SublimeProjects/quantecon.sublime-workspace",
+			"/home/chase/Documents/Academic/PaperSummaries/Summaries/Monetary/papersummaries.sublime-workspace"
+		]
+	}
+}

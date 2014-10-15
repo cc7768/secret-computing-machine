@@ -1,0 +1,22 @@
+{
+	"installed_packages":
+	[
+		"Alignment",
+		"Base16 Color Schemes",
+		"Colorsublime",
+		"Git",
+		"Github Color Theme",
+		"IJulia",
+		"Jinja2",
+		"Keymaps",
+		"LaTeXTools",
+		"Markdown Extended",
+		"Markdown Preview",
+		"RailsCasts Colour Scheme",
+		"SublimeLinter",
+		"Theme - Eightlime",
+		"Theme - Soda",
+		"UnicodeMath",
+		"WakaTime"
+	]
+}

@@ -1,0 +1,14 @@
+<snippet>
+	<content><![CDATA[
+"""
+Author: ${1:Chase Coleman}
+Date: ${2:Today}
+
+${3:This file is}
+"""
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<!-- <tabTrigger>hello</tabTrigger> -->
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

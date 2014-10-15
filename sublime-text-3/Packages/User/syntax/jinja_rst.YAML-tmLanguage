@@ -1,0 +1,12 @@
+# [PackageDev] target_format: plist, ext: tmLanguage
+---
+name: RST (Jinja Templates)
+scopeName: text.restructuredtext.jinja
+fileTypes: []
+uuid: 04b85a73-67a4-4856-a0b3-d8bcdbd27b5a
+
+patterns:
+- include: source.jinja
+
+- include: text.restructuredtext
+...

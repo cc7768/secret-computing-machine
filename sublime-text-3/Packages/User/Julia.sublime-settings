@@ -1,0 +1,10 @@
+{
+    "translateTabsToSpaces": true,
+    "auto_complete": false,
+    "rulers":
+    [
+        72,
+        78
+    ],
+    "tabSize": 4,
+}

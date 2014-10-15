@@ -1,0 +1,55 @@
+{
+	"auto_complete": false,
+	"color_scheme": "Packages/User/colour-schemes/dark/RailsCastsColorScheme (SL).tmTheme",
+	"file_exclude_patterns":
+	[
+		"*.ncb",
+		"*.sdf",
+		"*.suo",
+		"*.pdb",
+		"*.idb",
+		".DS_Store",
+		"*.class",
+		"*.psd",
+		"*.db",
+		"*.sublime-workspace",
+		"*.pyc",
+		"*.pyo",
+		"*.exe",
+		"*.dll",
+		"*.obj",
+		"*.o",
+		"*.a",
+		"*.lib",
+		"*.so",
+		"*.aux",
+		"*.log",
+		"*.blg",
+		"*.bbl",
+		"*.blg",
+		"*.nav",
+		"*.out",
+		"*.snm",
+		"*.toc",
+		"*.synctex.gz",
+		"*.fdb_latexmk",
+		"*.png",
+		"*.jpg"
+	],
+	"folder_exclude_patterns":
+	[
+		".svn",
+		".git",
+		".hg",
+		"CVS",
+		".ipynb_checkpoints"
+	],
+	"font_size": 8,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"theme": "Soda Dark 3.sublime-theme",
+	"translate_tabs_to_spaces": true,
+	"trim_trailing_white_space_on_save": true
+}
