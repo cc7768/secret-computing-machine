@@ -47,6 +47,7 @@
 	"font_size": 8,
 	"ignored_packages":
 	[
+		"UnicodeMath",
 		"Vintage"
 	],
 	"theme": "Soda Dark 3.sublime-theme",
