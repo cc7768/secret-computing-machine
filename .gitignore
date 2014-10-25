@@ -55,6 +55,7 @@ sublime-text-3/Backup/*
 sublime-text-3/Cache/*
 sublime-text-3/Index/*
 sublime-text-3/Local/*
+*.last-run
 
 # PyBuilder
 target/
