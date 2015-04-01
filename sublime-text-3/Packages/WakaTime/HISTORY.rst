@@ -3,6 +3,159 @@ History
 -------
 
 
+3.0.14 (2015-03-31)
++++++++++++++++++++
+
+- always use external python binary because ST builtin python does not support checking SSL certs
+- upgrade wakatime cli to v4.0.6
+
+
+3.0.13 (2015-03-23)
++++++++++++++++++++
+
+- correctly check for SSL support in ST built-in python
+- fix status bar message
+
+
+3.0.12 (2015-03-23)
++++++++++++++++++++
+
+- always use unicode function from compat module when encoding log messages
+
+
+3.0.11 (2015-03-23)
++++++++++++++++++++
+
+- upgrade simplejson package to v3.6.5
+
+
+3.0.10 (2015-03-22)
++++++++++++++++++++
+
+- ability to disable status bar message from WakaTime.sublime-settings file
+
+
+3.0.9 (2015-03-20)
+++++++++++++++++++
+
+- status bar message showing when WakaTime plugin is enabled
+- moved some logic into thread to help prevent slow plugin warning message
+
+
+3.0.8 (2015-03-09)
+++++++++++++++++++
+
+- upgrade wakatime cli to v4.0.4
+- use requests library instead of urllib2, so api SSL cert is verified
+- new --notfile argument to support logging time without a real file
+- new --proxy argument for https proxy support
+- new options for excluding and including directories
+
+
+3.0.7 (2015-02-05)
+++++++++++++++++++
+
+- handle errors encountered when looking for .sublime-project file
+
+
+3.0.6 (2015-01-13)
+++++++++++++++++++
+
+- upgrade external wakatime package to v3.0.5
+- ignore errors from malformed markup (too many closing tags)
+
+
+3.0.5 (2015-01-06)
+++++++++++++++++++
+
+- upgrade external wakatime package to v3.0.4
+- remove unused dependency, which is missing in some python environments
+
+
+3.0.4 (2014-12-26)
+++++++++++++++++++
+
+- fix bug causing plugin to not work in Sublime Text 2
+
+
+3.0.3 (2014-12-25)
+++++++++++++++++++
+
+- upgrade external wakatime package to v3.0.3
+- detect JavaScript frameworks from script tags in Html template files
+
+
+3.0.2 (2014-12-25)
+++++++++++++++++++
+
+- upgrade external wakatime package to v3.0.2
+- detect frameworks from JavaScript and JSON files
+
+
+3.0.1 (2014-12-23)
+++++++++++++++++++
+
+- parse use namespaces from php files
+
+
+3.0.0 (2014-12-23)
+++++++++++++++++++
+
+- upgrade external wakatime package to v3.0.1
+- detect libraries and frameworks for C++, Java, .NET, PHP, and Python files
+
+
+2.0.21 (2014-12-22)
+++++++++++++++++++
+
+- upgrade external wakatime package to v2.1.11
+- fix bug in offline logging when no response from api
+
+
+2.0.20 (2014-12-05)
+++++++++++++++++++
+
+- upgrade external wakatime package to v2.1.9
+- fix bug preventing offline heartbeats from being purged after uploaded
+
+
+2.0.19 (2014-12-04)
+++++++++++++++++++
+
+- upgrade external wakatime package to v2.1.8
+- fix UnicodeDecodeError when building user agent string
+- handle case where response is None
+
+
+2.0.18 (2014-11-30)
+++++++++++++++++++
+
+- upgrade external wakatime package to v2.1.7
+- upgrade pygments to v2.0.1
+- always log an error when api key is incorrect
+
+
+2.0.17 (2014-11-18)
+++++++++++++++++++
+
+- upgrade external wakatime package to v2.1.6
+- fix list index error when detecting subversion project
+
+
+2.0.16 (2014-11-12)
+++++++++++++++++++
+
+- upgrade external wakatime package to v2.1.4
+- when Python was not compiled with https support, log an error to the log file
+
+
+2.0.15 (2014-11-10)
+++++++++++++++++++
+
+- upgrade external wakatime package to v2.1.3
+- correctly detect branch for subversion projects
+
+
 2.0.14 (2014-10-14)
 ++++++++++++++++++
 

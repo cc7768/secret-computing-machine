@@ -1,1 +1,1 @@
-{"transport": "tcp", "ip": "127.0.0.1", "key": "", "shell_port": 5691, "hb_port": 5690, "iopub_port": 5692, "control_port": 5689, "stdin_port": 5688}
+{"transport": "tcp", "iopub_port": 5692, "ip": "127.0.0.1", "key": "", "control_port": 5689, "stdin_port": 5688, "hb_port": 5690, "shell_port": 5691}

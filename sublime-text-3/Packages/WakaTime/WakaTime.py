@@ -6,7 +6,9 @@ License:     BSD, see LICENSE for more details.
 Website:     https://wakatime.com/
 ==========================================================="""
 
-__version__ = '2.0.14'
+
+__version__ = '3.0.14'
+
 
 import sublime
 import sublime_plugin
@@ -17,15 +19,16 @@ import platform
 import sys
 import time
 import threading
-import uuid
-from os.path import expanduser, dirname, basename, realpath, isfile, join, exists
+import webbrowser
+from datetime import datetime
+from subprocess import Popen
 
 
 # globals
 ACTION_FREQUENCY = 2
 ST_VERSION = int(sublime.version())
-PLUGIN_DIR = dirname(realpath(__file__))
-API_CLIENT = '%s/packages/wakatime/wakatime-cli.py' % PLUGIN_DIR
+PLUGIN_DIR = os.path.dirname(os.path.realpath(__file__))
+API_CLIENT = os.path.join(PLUGIN_DIR, 'packages', 'wakatime', 'cli.py')
 SETTINGS_FILE = 'WakaTime.sublime-settings'
 SETTINGS = {}
 LAST_ACTION = {
@@ -33,26 +36,50 @@ LAST_ACTION = {
     'file': None,
     'is_write': False,
 }
-HAS_SSL = False
 LOCK = threading.RLock()
+PYTHON_LOCATION = None
 
-# check if we have SSL support
+
+# add wakatime package to path
+sys.path.insert(0, os.path.join(PLUGIN_DIR, 'packages'))
 try:
-    import ssl
-    import socket
-    socket.ssl
-    HAS_SSL = True
-except (ImportError, AttributeError):
-    from subprocess import Popen
+    from wakatime.base import parseConfigFile
+except ImportError:
+    pass
 
-if HAS_SSL:
-    # import wakatime package
-    sys.path.insert(0, join(PLUGIN_DIR, 'packages', 'wakatime'))
-    import wakatime
+
+def createConfigFile():
+    """Creates the .wakatime.cfg INI file in $HOME directory, if it does
+    not already exist.
+    """
+    configFile = os.path.join(os.path.expanduser('~'), '.wakatime.cfg')
+    try:
+        with open(configFile) as fh:
+            pass
+    except IOError:
+        try:
+            with open(configFile, 'w') as fh:
+                fh.write("[settings]\n")
+                fh.write("debug = false\n")
+                fh.write("hidefilenames = false\n")
+        except IOError:
+            pass
 
 
 def prompt_api_key():
     global SETTINGS
+
+    createConfigFile()
+
+    default_key = ''
+    try:
+        configs = parseConfigFile()
+        if configs is not None:
+            if configs.has_option('settings', 'api_key'):
+                default_key = configs.get('settings', 'api_key')
+    except:
+        pass
+
     if SETTINGS.get('api_key'):
         return True
     else:
@@ -62,7 +89,7 @@ def prompt_api_key():
                 sublime.save_settings(SETTINGS_FILE)
         window = sublime.active_window()
         if window:
-            window.show_input_panel('[WakaTime] Enter your wakatime.com api key:', '', got_key, None, None)
+            window.show_input_panel('[WakaTime] Enter your wakatime.com api key:', default_key, got_key, None, None)
             return True
         else:
             print('[WakaTime] Error: Could not prompt for api key because no window found.')
@@ -70,16 +97,31 @@ def prompt_api_key():
 
 
 def python_binary():
-    if platform.system() == 'Windows':
+    global PYTHON_LOCATION
+    if PYTHON_LOCATION is not None:
+        return PYTHON_LOCATION
+    paths = [
+        "pythonw",
+        "python",
+        "/usr/local/bin/python",
+        "/usr/bin/python",
+    ]
+    for path in paths:
         try:
-            Popen(['pythonw', '--version'])
-            return 'pythonw'
+            Popen([path, '--version'])
+            PYTHON_LOCATION = path
+            return path
         except:
-            for path in glob.iglob('/python*'):
-                if exists(realpath(join(path, 'pythonw.exe'))):
-                    return realpath(join(path, 'pythonw'))
-            return None
-    return 'python'
+            pass
+    for path in glob.iglob('/python*'):
+        path = os.path.realpath(os.path.join(path, 'pythonw'))
+        try:
+            Popen([path, '--version'])
+            PYTHON_LOCATION = path
+            return path
+        except:
+            pass
+    return None
 
 
 def enough_time_passed(now, last_time):
@@ -89,34 +131,31 @@ def enough_time_passed(now, last_time):
 
 
 def find_project_name_from_folders(folders):
-    for folder in folders:
-        for file_name in os.listdir(folder):
-            if file_name.endswith('.sublime-project'):
-                return file_name.replace('.sublime-project', '', 1)
+    try:
+        for folder in folders:
+            for file_name in os.listdir(folder):
+                if file_name.endswith('.sublime-project'):
+                    return file_name.replace('.sublime-project', '', 1)
+    except:
+        pass
     return None
 
 
 def handle_action(view, is_write=False):
-    global LOCK, LAST_ACTION
-    with LOCK:
+    window = view.window()
+    if window is not None:
         target_file = view.file_name()
-        if target_file:
-            project = view.window().project_file_name() if hasattr(view.window(), 'project_file_name') else None
-            if project:
-                project = basename(project).replace('.sublime-project', '', 1)
-            thread = SendActionThread(target_file, is_write=is_write, project=project, folders=view.window().folders())
-            thread.start()
-            LAST_ACTION = {
-                'file': target_file,
-                'time': time.time(),
-                'is_write': is_write,
-            }
+        project = window.project_file_name() if hasattr(window, 'project_file_name') else None
+        folders = window.folders()
+        thread = SendActionThread(target_file, view, is_write=is_write, project=project, folders=folders)
+        thread.start()
 
 
 class SendActionThread(threading.Thread):
 
-    def __init__(self, target_file, is_write=False, project=None, folders=None, force=False):
+    def __init__(self, target_file, view, is_write=False, project=None, folders=None, force=False):
         threading.Thread.__init__(self)
+        self.lock = LOCK
         self.target_file = target_file
         self.is_write = is_write
         self.project = project
@@ -125,15 +164,17 @@ class SendActionThread(threading.Thread):
         self.debug = SETTINGS.get('debug')
         self.api_key = SETTINGS.get('api_key', '')
         self.ignore = SETTINGS.get('ignore', [])
-        self.last_action = LAST_ACTION
+        self.last_action = LAST_ACTION.copy()
+        self.view = view
 
     def run(self):
-        if self.target_file:
-            self.timestamp = time.time()
-            if self.force or (self.is_write and not self.last_action['is_write']) or self.target_file != self.last_action['file'] or enough_time_passed(self.timestamp, self.last_action['time']):
-                self.send()
+        with self.lock:
+            if self.target_file:
+                self.timestamp = time.time()
+                if self.force or (self.is_write and not self.last_action['is_write']) or self.target_file != self.last_action['file'] or enough_time_passed(self.timestamp, self.last_action['time']):
+                    self.send_heartbeat()
 
-    def send(self):
+    def send_heartbeat(self):
         if not self.api_key:
             print('[WakaTime] Error: missing api key.')
             return
@@ -148,6 +189,8 @@ class SendActionThread(threading.Thread):
         if self.is_write:
             cmd.append('--write')
         if self.project:
+            self.project = os.path.basename(self.project).replace('.sublime-project', '', 1)
+        if self.project:
             cmd.extend(['--project', self.project])
         elif self.folders:
             project_name = find_project_name_from_folders(self.folders)
@@ -157,36 +200,43 @@ class SendActionThread(threading.Thread):
             cmd.extend(['--ignore', pattern])
         if self.debug:
             cmd.append('--verbose')
-        if HAS_SSL:
+        if python_binary():
+            cmd.insert(0, python_binary())
             if self.debug:
                 print('[WakaTime] %s' % ' '.join(cmd))
-            code = wakatime.main(cmd)
-            if code != 0:
-                print('[WakaTime] Error: Response code %d from wakatime package.' % code)
-        else:
-            python = python_binary()
-            if python:
-                cmd.insert(0, python)
-                if self.debug:
-                    print('[WakaTime] %s' % ' '.join(cmd))
-                if platform.system() == 'Windows':
-                    Popen(cmd, shell=False)
-                else:
-                    with open(join(expanduser('~'), '.wakatime.log'), 'a') as stderr:
-                        Popen(cmd, stderr=stderr)
+            if platform.system() == 'Windows':
+                Popen(cmd, shell=False)
             else:
-                print('[WakaTime] Error: Unable to find python binary.')
+                with open(os.path.join(os.path.expanduser('~'), '.wakatime.log'), 'a') as stderr:
+                    Popen(cmd, stderr=stderr)
+            self.sent()
+        else:
+            print('[WakaTime] Error: Unable to find python binary.')
+
+    def sent(self):
+        sublime.set_timeout(self.set_status_bar, 0)
+        sublime.set_timeout(self.set_last_action, 0)
+
+    def set_status_bar(self):
+        if SETTINGS.get('status_bar_message'):
+            self.view.set_status('wakatime', 'WakaTime active {0}'.format(datetime.now().strftime('%I:%M %p')))
+
+    def set_last_action(self):
+        global LAST_ACTION
+        LAST_ACTION = {
+            'file': self.target_file,
+            'time': self.timestamp,
+            'is_write': self.is_write,
+        }
 
 
 def plugin_loaded():
     global SETTINGS
     print('[WakaTime] Initializing WakaTime plugin v%s' % __version__)
 
-    if not HAS_SSL:
-        python = python_binary()
-        if not python:
-            sublime.error_message("Unable to find Python binary!\nWakaTime needs Python to work correctly.\n\nGo to https://www.python.org/downloads")
-            return
+    if not python_binary():
+        sublime.error_message("Unable to find Python binary!\nWakaTime needs Python to work correctly.\n\nGo to https://www.python.org/downloads")
+        return
 
     SETTINGS = sublime.load_settings(SETTINGS_FILE)
     after_loaded()
@@ -212,3 +262,9 @@ class WakatimeListener(sublime_plugin.EventListener):
 
     def on_modified(self, view):
         handle_action(view)
+
+
+class WakatimeDashboardCommand(sublime_plugin.ApplicationCommand):
+
+    def run(self):
+        webbrowser.open_new_tab('https://wakatime.com/dashboard')

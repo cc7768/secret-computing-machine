@@ -25,7 +25,7 @@
     ,{
         "command_name": "default",
         "julia": "julia",
-        "ijulia_kernel": "~/.julia/v0.3/IJulia/src/kernel.jl"
+        "ijulia_kernel": "~/.julia/v0.4/IJulia/src/kernel.jl"
     }
 */
 // Note the comma before the 1st curly brace. This can be pasted

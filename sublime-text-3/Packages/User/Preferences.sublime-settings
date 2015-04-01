@@ -1,4 +1,8 @@
 {
+	"added_words":
+	[
+		"Kalman"
+	],
 	"auto_complete": false,
 	"color_scheme": "Packages/User/colour-schemes/dark/RailsCastsColorScheme (SL).tmTheme",
 	"file_exclude_patterns":
@@ -47,7 +51,6 @@
 	"font_size": 8,
 	"ignored_packages":
 	[
-		"UnicodeMath",
 		"Vintage"
 	],
 	"theme": "Soda Dark 3.sublime-theme",
